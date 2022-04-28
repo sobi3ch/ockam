@@ -1,0 +1,61 @@
+[package]
+authors = ["Ockam Developers"]
+categories = [
+    "cryptography",
+    "asynchronous",
+    "authentication",
+    "embedded",
+    "network-programming",
+]
+description = "Ockam Node implementation crate"
+edition = "2018"
+homepage = "https://github.com/ockam-network/ockam"
+repository = "https://github.com/ockam-network/ockam/tree/develop/implementations/rust/ockam/ockam_node"
+keywords = [
+    "ockam",
+    "crypto",
+    "cryptography",
+    "network-programming",
+    "encryption",
+]
+license = "Apache-2.0"
+name = "ockam_node"
+version = "0.43.0"
+publish = true
+rust-version = "1.56.0"
+
+[features]
+default = ["std"]
+
+# Feature (enabled by default): "std" enables functionality expected to
+# be available on a standard platform.
+std = ["ockam_core/std", "tokio", "tracing-subscriber/fmt", "tracing-subscriber/env-filter", "alloc"]
+
+# Feature: "no_std" enables functionality required for platforms
+# without the standard library.
+no_std = ["ockam_core/no_std", "heapless"]
+
+# Feature: "alloc" enables support for heap allocation (implied by `feature = "std"`)
+alloc = ["ockam_core/alloc", "ockam_executor/alloc"]
+
+# Feature: "dump_internals" when set, will dump the internal state of
+# workers at startup via the trace! macro.
+dump_internals = []
+
+[dependencies]
+ockam_core = { path = "../ockam_core", version = "^0.44.0", default_features = false }
+ockam_macros = { path = "../ockam_macros", version = "^0.5.0"}
+tokio = { version = "1.8", default-features = false, optional = true, features = [
+    "sync",
+    "time",
+    "rt",
+    "rt-multi-thread",
+    "macros",
+] }
+tracing = { version = "0.1", default_features = false }
+tracing-subscriber = { version = "0.3", features = [
+    "fmt",
+    "env-filter",
+], optional = true }
+heapless = { version = "0.7", features = ["mpmc_large"], optional = true }
+ockam_executor = { path = "../ockam_executor", version = "^0.13.0", default-features = false, optional = true }

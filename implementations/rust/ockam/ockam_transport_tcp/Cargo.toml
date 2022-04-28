@@ -1,0 +1,50 @@
+[package]
+name = "ockam_transport_tcp"
+version = "0.39.0"
+authors = ["Ockam Developers"]
+edition = "2018"
+license = "Apache-2.0"
+homepage = "https://github.com/ockam-network/ockam"
+repository = "https://github.com/ockam-network/ockam/implementations/rust/ockam/ockam_transport_tcp"
+readme = "README.md"
+keywords = ["ockam", "crypto", "network", "networking", "tcp"]
+categories = [
+    "cryptography",
+    "asynchronous",
+    "authentication",
+    "network-programming",
+    "embedded",
+]
+description = """
+TCP Transport for the Ockam Routing Protocol.
+"""
+autoexamples = false
+publish = true
+rust-version = "1.56.0"
+
+[features]
+default = ["std"]
+std = ["ockam_macros/std"]
+alloc = []
+
+[dependencies]
+ockam_core = { path = "../ockam_core", version = "^0.44.0"}
+ockam_node = { path = "../ockam_node", version = "^0.43.0"}
+ockam_macros = { path = "../ockam_macros", version = "^0.5.0"}
+ockam_transport_core = { path = "../ockam_transport_core", version = "^0.18.0"}
+serde = { version = "1.0", default-features = false, features = ["derive"] }
+tokio = { version = "1.8", features = [
+    "rt-multi-thread",
+    "sync",
+    "net",
+    "macros",
+    "time",
+    "io-util",
+] }
+futures = "0.3.10"
+rand = "0.7"
+hashbrown = { version = "0.9" }
+tracing = { version = "0.1", default-features = false }
+
+[dev-dependencies]
+trybuild = { version = "1.0", features = ["diff"] }

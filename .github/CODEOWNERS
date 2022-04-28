@@ -1,0 +1,15 @@
+# Request reviews from Mrinal unless one of the specific rules later in this file take precedence.
+* @mrinalwadhwa
+
+# Request reviews from Jared and Mrinal when code in the rust implementation changes.
+implementations/rust/* @jared-s @mrinalwadhwa
+
+# Request reviews from Daniil and Mrinal when code in the Elixir implementation changes.
+implementations/elixir/* @hairyhum @mrinalwadhwa
+
+# Request reviews from Sanjo and Mrinal when code in the C implementation changes.
+implementations/c/* @sanjodeundiak @mrinalwadhwa
+
+# References on updating this file:
+# https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners
+# https://git-scm.com/docs/gitignore#_pattern_format

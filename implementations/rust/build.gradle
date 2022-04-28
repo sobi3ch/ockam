@@ -1,0 +1,107 @@
+project.buildDir = java.nio.file.Paths.get('..', '..', 'target');
+
+if(project.hasProperty('mode')) {
+  ext.mode = mode.toLowerCase()
+} else {
+  ext.mode = gradle.parent != null ? 'release' : 'debug'
+}
+
+ext {
+  ci = System.getenv('CI') == 'true'
+
+  cargo = { String... arguments ->
+    command = ['cargo']
+    command.addAll(arguments)
+
+    if (command.contains('build') && mode == 'release') {
+      command.add('--release')
+    }
+
+    println "[Gradle] Command: ${command.join(' ')}"
+    return command
+  }
+}
+
+task lint_cargo_fmt_check {
+  doLast {
+    exec { commandLine cargo('fmt', '--all', '--', '--check') }
+  }
+}
+
+task lint_cargo_clippy {
+  doLast {
+    exec { commandLine cargo('clippy', '--no-deps', '--', '-D', 'warnings') }
+  }
+}
+
+task lint_cargo_deny {
+  doLast {
+    exec { commandLine cargo('install', '--locked', '--version', '0.11.0', 'cargo-deny') }
+    exec { commandLine cargo('deny', '--manifest-path=../../Cargo.toml', 'check', 'licenses', 'advisories') }
+  }
+}
+
+task lint {
+  group project.name
+  description 'Lint the project.'
+
+  dependsOn lint_cargo_fmt_check, lint_cargo_clippy, lint_cargo_deny
+}
+
+task build_docs {
+  doLast {
+    exec { commandLine cargo('doc', '--no-deps') }
+  }
+}
+
+task build {
+  doLast {
+    exec {
+      if (ci) {
+        environment RUSTFLAGS: "-Cdebuginfo=0"
+        environment CARGO_INCREMENTAL: "0"
+      }
+      commandLine cargo('--locked', 'build')
+    }
+  }
+}
+
+task build_examples {
+  doLast {
+    exec {
+      if (ci) {
+        environment RUSTFLAGS: "-Cdebuginfo=0"
+        environment CARGO_INCREMENTAL: "0"
+      }
+      commandLine cargo('--locked', 'build', '--examples')
+    }
+  }
+}
+
+task test {
+  group project.name
+  description 'Test the project.'
+
+  doLast {
+    exec { commandLine cargo('--locked', 'test') }
+  }
+}
+
+task clean {
+  group project.name
+  description 'Clean the project.'
+
+  doLast {
+    exec { commandLine cargo('clean') }
+  }
+}
+
+task veryClean {
+  group project.name
+  description 'Clean the project.'
+
+  doLast {
+    println "[Gradle] Very Clean: ${buildDir}"
+    delete buildDir
+  }
+}

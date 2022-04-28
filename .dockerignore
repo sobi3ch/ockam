@@ -1,0 +1,14 @@
+# All directories that start with `.`
+**/.*
+
+!.github
+
+# Rust builds
+**/target
+
+# ELixir builds
+**/_build
+**/deps
+
+# Gradle builds
+**/build

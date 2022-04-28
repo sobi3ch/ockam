@@ -1,0 +1,20 @@
+name: Editorconfig
+
+permissions:
+  contents: read
+
+on: [workflow_dispatch, pull_request, push]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Editorconfig - Lint
+    runs-on: ubuntu-20.04
+    container: # gitlab.com/greut/eclint
+      image: greut/eclint:v0.3.3@sha256:95e9a3dcbd236bae6569625cd403175cbde3705303774e7baca418b6442b8d77
+    steps:
+      - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+      - run: eclint -color=always
