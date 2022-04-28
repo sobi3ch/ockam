@@ -51,7 +51,7 @@ jobs:
     container:
       image: ghcr.io/ockam-network/ockam/builder@sha256:e874d5c6323736e18c666aa26d15188b17f2342fee41bf20bdff463ace9bc4ae
     steps:
-      - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - uses: ./.github/actions/gradle_cache
       - uses: ./.github/actions/elixir_cache
       - run: cd implementations/elixir && ../../gradlew lint_ockam_vault_software
@@ -62,7 +62,7 @@ jobs:
     container:
       image: ghcr.io/ockam-network/ockam/builder@sha256:e874d5c6323736e18c666aa26d15188b17f2342fee41bf20bdff463ace9bc4ae
     steps:
-      - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - uses: ./.github/actions/gradle_cache
       - uses: ./.github/actions/elixir_cache
       - run: cd implementations/elixir && ../../gradlew lint_ockam
@@ -73,7 +73,7 @@ jobs:
     container:
       image: ghcr.io/ockam-network/ockam/builder@sha256:e874d5c6323736e18c666aa26d15188b17f2342fee41bf20bdff463ace9bc4ae
     steps:
-      - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - uses: ./.github/actions/gradle_cache
       - uses: ./.github/actions/elixir_cache
       - run: cd implementations/elixir && ../../gradlew lint_ockam_kafka
@@ -84,7 +84,7 @@ jobs:
     container:
       image: ghcr.io/ockam-network/ockam/builder@sha256:e874d5c6323736e18c666aa26d15188b17f2342fee41bf20bdff463ace9bc4ae
     steps:
-      - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - uses: ./.github/actions/gradle_cache
       - uses: ./.github/actions/elixir_cache
       - run: cd implementations/elixir && ../../gradlew lint_ockam_kafka
@@ -95,7 +95,7 @@ jobs:
     container:
       image: ghcr.io/ockam-network/ockam/builder@sha256:e874d5c6323736e18c666aa26d15188b17f2342fee41bf20bdff463ace9bc4ae
     steps:
-      - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - uses: ./.github/actions/gradle_cache
       - uses: ./.github/actions/elixir_cache
       - run: cd implementations/elixir && ../../gradlew build_ockam_vault_software
@@ -106,7 +106,7 @@ jobs:
     container:
       image: ghcr.io/ockam-network/ockam/builder@sha256:e874d5c6323736e18c666aa26d15188b17f2342fee41bf20bdff463ace9bc4ae
     steps:
-      - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - uses: ./.github/actions/gradle_cache
       - uses: ./.github/actions/elixir_cache
       - run: cd implementations/elixir && ../../gradlew build_ockam
@@ -117,7 +117,7 @@ jobs:
     container:
       image: ghcr.io/ockam-network/ockam/builder@sha256:e874d5c6323736e18c666aa26d15188b17f2342fee41bf20bdff463ace9bc4ae
     steps:
-      - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - uses: ./.github/actions/gradle_cache
       - uses: ./.github/actions/elixir_cache
       - run: cd implementations/elixir && ../../gradlew build_ockam_kafka
@@ -128,7 +128,7 @@ jobs:
     container:
       image: ghcr.io/ockam-network/ockam/builder@sha256:e874d5c6323736e18c666aa26d15188b17f2342fee41bf20bdff463ace9bc4ae
     steps:
-      - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - uses: ./.github/actions/gradle_cache
       - uses: ./.github/actions/elixir_cache
       - run: cd implementations/elixir && ../../gradlew build_ockam_hub
@@ -139,7 +139,7 @@ jobs:
     container:
       image: ghcr.io/ockam-network/ockam/builder@sha256:e874d5c6323736e18c666aa26d15188b17f2342fee41bf20bdff463ace9bc4ae
     steps:
-      - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - uses: ./.github/actions/gradle_cache
       - uses: ./.github/actions/cargo_home_cache
       - uses: ./.github/actions/cargo_target_dir_cache
@@ -153,7 +153,7 @@ jobs:
     container:
       image: ghcr.io/ockam-network/ockam/builder@sha256:e874d5c6323736e18c666aa26d15188b17f2342fee41bf20bdff463ace9bc4ae
     steps:
-      - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - uses: ./.github/actions/gradle_cache
       - uses: ./.github/actions/cargo_home_cache
       - uses: ./.github/actions/cargo_target_dir_cache
@@ -167,7 +167,7 @@ jobs:
     container:
       image: ghcr.io/ockam-network/ockam/builder@sha256:e874d5c6323736e18c666aa26d15188b17f2342fee41bf20bdff463ace9bc4ae
     steps:
-      - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - uses: ./.github/actions/gradle_cache
       - uses: ./.github/actions/cargo_home_cache
       - uses: ./.github/actions/cargo_target_dir_cache
@@ -181,7 +181,7 @@ jobs:
     container:
       image: ghcr.io/ockam-network/ockam/builder@sha256:e874d5c6323736e18c666aa26d15188b17f2342fee41bf20bdff463ace9bc4ae
     steps:
-      - uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - uses: ./.github/actions/gradle_cache
       - uses: ./.github/actions/cargo_home_cache
       - uses: ./.github/actions/cargo_target_dir_cache
